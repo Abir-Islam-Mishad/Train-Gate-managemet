@@ -6,7 +6,7 @@ Servo myservo2;
 #define trigPin2 9
 #define echoPin2 10
 
-#define buzzer 6
+#define buzzer 13
 
 //this code is developed by Abir Islam Mishad
 // for any help +8801771465323
@@ -21,7 +21,7 @@ Serial.begin(9600);
  pinMode(echoPin2, INPUT);
  pinMode(buzzer, OUTPUT);
  
-myservo1.attach(6);
+myservo1.attach(8);
 myservo2.attach(9);
 myservo1.write(0);
 myservo2.write(0);
