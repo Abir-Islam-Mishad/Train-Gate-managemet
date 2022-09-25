@@ -1,12 +1,11 @@
 #include <Servo.h>
 Servo myservo1; 
 Servo myservo2;
-#define trigPin1 7
-#define echoPin1 8
-#define trigPin2 9
-#define echoPin2 10
-
-#define buzzer 13
+#define abir1 3
+#define mishad1 2
+#define abir2 6
+#define mishad2 7
+#define buzzer 6
 
 //this code is developed by Abir Islam Mishad
 // for any help +8801771465323
@@ -15,13 +14,13 @@ Servo myservo2;
 void setup() {
   
 Serial.begin(9600);
- pinMode(trigPin1, OUTPUT);
- pinMode(echoPin1, INPUT);
- pinMode(trigPin2, OUTPUT);
- pinMode(echoPin2, INPUT);
+ pinMode(abir1, OUTPUT);
+ pinMode(mishad1, INPUT);
+ pinMode(abir2, OUTPUT);
+ pinMode(mishad2, INPUT);
  pinMode(buzzer, OUTPUT);
  
-myservo1.attach(8);
+myservo1.attach(6);
 myservo2.attach(9);
 myservo1.write(0);
 myservo2.write(0);
@@ -30,36 +29,36 @@ myservo2.write(0);
 
 void loop() {
 
-  long duration1, distance1;
-  digitalWrite(trigPin1, LOW);
+  long duration1, abirmishad1;
+  digitalWrite(abir1, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigPin1, HIGH);
+  digitalWrite(abir1, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin1, LOW);
-  duration1 = pulseIn(echoPin1, HIGH);
-  distance1 = (duration1 / 2) / 29.1;
+  digitalWrite(abir1, LOW);
+  duration1 = pulseIn(mishad1, HIGH);
+  abirmishad1 = (duration1 / 2) / 29.1;
   
-  long duration2, distance2;
-  digitalWrite(trigPin2, LOW);
+  long duration2, abirmishad2;
+  digitalWrite(abir2, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigPin2, HIGH);
+  digitalWrite(abir2, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin2, LOW);
-  duration2 = pulseIn(echoPin2, HIGH);
-  distance2 = (duration2 / 2) / 29.1;
+  digitalWrite(abir2, LOW);
+  duration2 = pulseIn(mishad2, HIGH);
+  abirmishad2 = (duration2 / 2) / 29.1;
   
-  Serial.println(distance1);
+  Serial.println(abirmishad1);
   Serial.print("      ");
-  Serial.print(distance2);
+  Serial.print(abirmishad2);
 
-if((distance1 < 10)&&(distance2 > 10)){
+if((abirmishad1 < 10)&&(abirmishad2 > 10)){
   myservo1.write(90);
   myservo2.write(90);
   digitalWrite(buzzer,HIGH);
   delay(500);
 }
 
- else if((distance2 < 10)&&(distance1 > 10)){
+ else if((abirmishad2 < 10)&&(abirmishad1 > 10)){
   myservo1.write(0);
   myservo2.write(0);
   digitalWrite(buzzer,LOW);
