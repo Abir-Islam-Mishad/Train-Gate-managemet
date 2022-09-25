@@ -5,7 +5,7 @@ Servo myservo2;
 #define mishad1 2
 #define abir2 6
 #define mishad2 7
-#define buzzer 6
+#define buzzer 13
 
 //this code is developed by Abir Islam Mishad
 // for any help +8801771465323
